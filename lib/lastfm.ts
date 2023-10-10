@@ -4,7 +4,6 @@ import siteMetadata from '@/data/siteMetadata'
 import { Lastfm, RecentTracks, TopAlbums } from '@/lib/types'
 const LASTFM_API_KEY = process.env.LASTFM_API_KEY
 
-
 const NOW_PLAYING_ENDPOINT = `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${siteMetadata.author.username}&api_key=${LASTFM_API_KEY}&format=json&limit=1`
 const STATS_ENDPOINT = `http://ws.audioscrobbler.com/2.0/?method=user.getinfo&user=${siteMetadata.author.username}&api_key=${LASTFM_API_KEY}&format=json`
 const TOP_ALBUMS_ENDPOINT = `https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&user=${siteMetadata.author.username}&period=7day&api_key=${LASTFM_API_KEY}&format=json&limit=20`

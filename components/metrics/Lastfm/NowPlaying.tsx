@@ -15,7 +15,12 @@ export default function NowPlaying(): JSX.Element {
 		</div>
 	) : (
 		<div className="flex w-full flex-row-reverse items-center">
-			<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="block h-6 w-6">
+			<svg
+				role="img"
+				viewBox="0 0 24 24"
+				xmlns="http://www.w3.org/2000/svg"
+				className="block h-6 w-6"
+			>
 				<title>Last.fm</title>
 				<path
 					fill="#D51007"

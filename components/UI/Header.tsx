@@ -3,7 +3,7 @@ import siteMetadata from '@/data/siteMetadata'
 
 export default function Header() {
 	return (
-		<header className="flex w-full items-center justify-between px-6 py-4 bg-nfh-background-secondary">
+		<header className="flex w-full items-center justify-between bg-nfh-background-secondary px-6 py-4">
 			<div>
 				<a href="/" aria-label={siteMetadata.title}>
 					<svg
@@ -88,7 +88,10 @@ export default function Header() {
 								d="M108.747 31.7238L108.148 29.7561H105.134L104.535 31.7238H102.646L105.564 23.4234H107.707L110.636 31.7238H108.747ZM107.729 28.286C107.175 26.503 106.862 25.4947 106.791 25.261C106.723 25.0273 106.674 24.8426 106.644 24.7069C106.519 25.1894 106.163 26.3824 105.575 28.286H107.729Z"
 								fill="white"
 							/>
-							<path d="M111.797 31.7238V23.4573H113.55V30.2763H116.903V31.7238H111.797Z" fill="white" />
+							<path
+								d="M111.797 31.7238V23.4573H113.55V30.2763H116.903V31.7238H111.797Z"
+								fill="white"
+							/>
 							<path
 								d="M121.961 31.7238L119.971 25.2384H119.92C119.991 26.5577 120.027 27.4379 120.027 27.8789V31.7238H118.461V23.4573H120.847L122.803 29.7787H122.837L124.912 23.4573H127.298V31.7238H125.664V27.8111C125.664 27.6264 125.666 27.4134 125.67 27.1721C125.678 26.9309 125.704 26.2901 125.749 25.2497H125.698L123.567 31.7238H121.961Z"
 								fill="white"
@@ -112,10 +115,32 @@ export default function Header() {
 			</div>
 			<div className="flex space-x-4">
 				<Link href={`https://twitter.com/${siteMetadata.username}`}>
-					<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="h-6 w-6"><title>X</title><path fill="#000000" d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" /></svg>
+					<svg
+						role="img"
+						viewBox="0 0 24 24"
+						xmlns="http://www.w3.org/2000/svg"
+						className="h-6 w-6"
+					>
+						<title>X</title>
+						<path
+							fill="#000000"
+							d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"
+						/>
+					</svg>
 				</Link>
 				<Link href={`${siteMetadata.siteUrl}/feed.xml`}>
-					<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="h-6 w-6"><title>RSS</title><path fill="#FFA500" d="M19.199 24C19.199 13.467 10.533 4.8 0 4.8V0c13.165 0 24 10.835 24 24h-4.801zM3.291 17.415c1.814 0 3.293 1.479 3.293 3.295 0 1.813-1.485 3.29-3.301 3.29C1.47 24 0 22.526 0 20.71s1.475-3.294 3.291-3.295zM15.909 24h-4.665c0-6.169-5.075-11.245-11.244-11.245V8.09c8.727 0 15.909 7.184 15.909 15.91z" /></svg>
+					<svg
+						role="img"
+						viewBox="0 0 24 24"
+						xmlns="http://www.w3.org/2000/svg"
+						className="h-6 w-6"
+					>
+						<title>RSS</title>
+						<path
+							fill="#FFA500"
+							d="M19.199 24C19.199 13.467 10.533 4.8 0 4.8V0c13.165 0 24 10.835 24 24h-4.801zM3.291 17.415c1.814 0 3.293 1.479 3.293 3.295 0 1.813-1.485 3.29-3.301 3.29C1.47 24 0 22.526 0 20.71s1.475-3.294 3.291-3.295zM15.909 24h-4.665c0-6.169-5.075-11.245-11.244-11.245V8.09c8.727 0 15.909 7.184 15.909 15.91z"
+						/>
+					</svg>
 				</Link>
 			</div>
 		</header>

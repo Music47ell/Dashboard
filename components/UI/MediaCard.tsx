@@ -27,9 +27,7 @@ export default function MediaCard({ title, image, url }: MediaCardProps) {
 				<div className="h-full w-full animate-pulse bg-white"></div>
 			)}
 			<div>
-				<p className="origin-left text-base font-semibold text-white md:text-xl">
-					{title}
-				</p>
+				<p className="origin-left text-base font-semibold text-white md:text-xl">{title}</p>
 			</div>
 		</Link>
 	)

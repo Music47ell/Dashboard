@@ -14,8 +14,9 @@ const CustomLink = ({
 	const isInternalLink = href && href.startsWith('/')
 	const isAnchorLink = href && href.startsWith('#')
 
-	const style = `${className ? className : ''
-		} text-nfh-accent-primary hover:text-nfh-accent-secondary`.replace(/^\s+/, '')
+	const style = `${
+		className ? className : ''
+	} text-nfh-accent-primary hover:text-nfh-accent-secondary`.replace(/^\s+/, '')
 
 	if (isInternalLink) {
 		return (
@@ -35,10 +36,11 @@ const CustomLink = ({
 
 	return (
 		<a
-			href={`${href?.includes('mailto:')
+			href={`${
+				href?.includes('mailto:')
 					? href
 					: `${href}?ref=dashboard.${siteMetadata.siteUrl.replace(/(https?:\/\/)?(www\.)?/, '')}`
-				}`}
+			}`}
 			className={style}
 			{...rest}
 		>

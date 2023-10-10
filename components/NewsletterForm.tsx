@@ -86,10 +86,11 @@ const NewsletterForm = ({
 									</svg>
 								</div>
 								<input
-									className={`${subscribed
+									className={`${
+										subscribed
 											? 'bg-nfh-background-secondary placeholder:text-nfh-text-secondary'
 											: 'bg-nfh-background-primary placeholder:text-nfh-text-primary'
-										} block w-full border border-nfh-accent-primary bg-nfh-background-primary p-3 pl-10 text-sm focus:border-nfh-accent-secondary focus:ring-nfh-accent-secondary`}
+									} block w-full border border-nfh-accent-primary bg-nfh-background-primary p-3 pl-10 text-sm focus:border-nfh-accent-secondary focus:ring-nfh-accent-secondary`}
 									autoComplete="email"
 									id="email-input"
 									name="email"
