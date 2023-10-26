@@ -111,35 +111,12 @@ export type Track = {
 	}
 }
 
-export type NowPlayingSong = {
-	isPlaying: boolean
-	title: string
-	artist: string
-	album: string
-	image: string
-	url: string
-}
-
 export type Song = {
 	songUrl: string
 	artist: string
 	title: string
 	album: string
 	albumImage: string
-}
-
-export type Podcast = {
-	podcastUrl: string
-	title: string
-	show: string
-	podcastImage: string
-}
-
-export type NowWatchingRelease = {
-	poster: string
-	title: string
-	url: string
-	isWatching: boolean
 }
 
 export type Trakt = {

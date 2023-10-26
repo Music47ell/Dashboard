@@ -1,7 +1,5 @@
 import HCard from '@/components/hCard'
 import { default as Link } from '@/components/Link'
-import { NowPlaying } from '@/components/metrics/Lastfm'
-import { NowWatching } from '@/components/metrics/Trakt'
 import siteMetadata from '@/data/siteMetadata'
 
 export default function Footer(): JSX.Element {
@@ -16,8 +14,6 @@ export default function Footer(): JSX.Element {
 							</Link>
 						))}
 					</div>
-					<NowPlaying />
-					<NowWatching />
 					<HCard />
 					<div className="flex items-center justify-between space-x-3">
 						{siteMetadata.author.social.map((link, index) => (
