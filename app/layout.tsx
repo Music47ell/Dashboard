@@ -2,8 +2,7 @@ import '@/assets/css/tailwind.css'
 
 import type { Metadata } from 'next'
 
-import Analytics from '@/components/Analytics'
-import { Header, Nav, Divider, Footer } from '@/components/UI'
+import { Divider, Footer, Header, Nav } from '@/components/UI'
 import siteMetadata from '@/data/siteMetadata'
 
 export const metadata: Metadata = {
@@ -105,13 +104,17 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
 			<body className="bg-nfh-background-primary text-nfh-text-primary antialiased">
-				<Analytics />
 				<div className="flex min-h-screen flex-col justify-between">
 					<Header />
 					<Nav />
 					{children}
 					<Divider>
-						<svg viewBox="0 0 35 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="block h-10 w-auto">
+						<svg
+							viewBox="0 0 35 32"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+							className="block h-10 w-auto"
+						>
 							<title>News47ell</title>
 							<path d="M23.7046 0H27.2215L11.5169 32H8L23.7046 0Z" fill="#E30A17" />
 						</svg>

@@ -24,17 +24,18 @@ const siteMetadata = {
 			emojiFlag: '🇹🇷',
 		},
 		social: [
-			{ title: 'X', href: 'https://twitter.com/music47ell' },
-			{ title: 'GitHub', href: 'https://github.com/music47ell' },
-			{ title: 'LinkedIn', href: 'https://www.linkedin.com/in/music47ell' },
-			{ title: 'Mastodon', href: 'https://mastodon.social/@music47ell' },
+			{ title: 'X', url: 'https://twitter.com/music47ell' },
+			{ title: 'GitHub', url: 'https://github.com/music47ell' },
+			{ title: 'LinkedIn', url: 'https://www.linkedin.com/in/music47ell' },
+			{ title: 'Mastodon', url: 'https://mastodon.social/@music47ell' },
 		],
 	},
 	NavLinks: [
-		{ title: 'Blog', href: 'https://www.news47ell.com/blog', activePath: /^\/blog*/ },
-		{ title: 'Projects', href: 'https://www.news47ell.com/projects', activePath: /^\/projects*/ },
-		{ title: 'Colophon', href: 'https://www.news47ell.com/colophon', activePath: /^\/colophon*/ },
-		{ title: 'Sponsors', href: 'https://www.news47ell.com/sponsors', activePath: /^\/sponsors*/ },
+		{ title: 'Home', url: 'https://www.news47ell.com', activePath: /^\/$/ },
+		{ title: 'Blog', url: 'https://www.news47ell.com/blog', activePath: /^\/blog*/ },
+		{ title: 'Projects', url: 'https://www.news47ell.com/projects', activePath: /^\/projects*/ },
+		{ title: 'Colophon', url: 'https://www.news47ell.com/colophon', activePath: /^\/colophon*/ },
+		{ title: 'Sponsors', url: 'https://www.news47ell.com/sponsors', activePath: /^\/sponsors*/ },
 	],
 }
 

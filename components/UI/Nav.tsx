@@ -7,7 +7,7 @@ export default function Nav() {
 			<ul className="flex justify-center space-x-4">
 				{siteMetadata.NavLinks.map((navLink) => (
 					<li key={navLink.title}>
-						<Link href={navLink.href}>{navLink.title}</Link>
+						<Link href={navLink.url}>{navLink.title}</Link>
 					</li>
 				))}
 			</ul>

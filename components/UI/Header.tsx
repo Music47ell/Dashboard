@@ -5,7 +5,7 @@ export default function Header() {
 	return (
 		<header className="flex w-full items-center justify-between bg-nfh-background-secondary px-6 py-4">
 			<div>
-				<a href={siteMetadata.siteUrl} aria-label={siteMetadata.title}>
+				<a href="/" aria-label={siteMetadata.title}>
 					<svg
 						width="143"
 						height="32"

@@ -9,7 +9,7 @@ export default function Footer(): JSX.Element {
 				<div className="grid grid-cols-1">
 					<div className="flex items-center justify-between space-x-3">
 						{siteMetadata.NavLinks.map((link, index) => (
-							<Link key={index} href={link.href}>
+							<Link key={index} href={link.url}>
 								{link.title}
 							</Link>
 						))}
@@ -17,7 +17,7 @@ export default function Footer(): JSX.Element {
 					<HCard />
 					<div className="flex items-center justify-between space-x-3">
 						{siteMetadata.author.social.map((link, index) => (
-							<Link key={index} href={link.href}>
+							<Link key={index} href={link.url}>
 								{link.title}
 							</Link>
 						))}

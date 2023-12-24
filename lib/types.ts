@@ -1,61 +1,3 @@
-export type RecentTracks = {
-	recenttracks: {
-		track: {
-			name: string
-			artist: {
-				'#text': string
-			}
-			album: {
-				'#text': string
-			}
-			url: string
-			image: {
-				size: string
-				'#text': string
-			}[]
-			date: {
-				uts: string
-				'#text': string
-			}
-			'@attr': {
-				nowplaying: string
-			}
-		}[]
-		'@attr': {
-			user: string
-			page: string
-			perPage: string
-			totalPages: string
-			total: string
-		}
-	}
-}
-
-export type TopAlbums = {
-	topalbums: {
-		album: {
-			name: string
-			playcount: string
-			url: string
-			image: {
-				size: string
-				'#text': string
-			}[]
-			artist: {
-				name: string
-				url: string
-			}
-		}[]
-		'@attr': {
-			user: string
-			perPage: string
-			page: string
-			totalPages: string
-			total: string
-		}
-	}
-}
-
 export type CodeStats = {
 	total_xp: number
 	previous_xp: number
@@ -117,6 +59,13 @@ export type Song = {
 	title: string
 	album: string
 	albumImage: string
+}
+
+export type Podcast = {
+	podcastUrl: string
+	title: string
+	show: string
+	podcastImage: string
 }
 
 export type Trakt = {

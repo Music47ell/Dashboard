@@ -5,7 +5,9 @@ import SectionHeading from '../SectionHeading'
 import SectionSubHeading from '../SectionSubHeading'
 import LastfmCard from './LastfmCard'
 import RecentTracks from './RecentTracks'
+import SubscribedPodcasts from './SubscribedPodcasts'
 import TopAlbums from './TopAlbums'
+import TopArtists from './TopArtists'
 
 export default function Music() {
 	return (
@@ -31,8 +33,12 @@ export default function Music() {
 			</div>
 			<h3 className="text-2xl font-bold leading-8 tracking-tight">Most Recent Tracks</h3>
 			<RecentTracks />
-			<h3 className="text-2xl font-bold leading-8 tracking-tight">Weekly Top Albums</h3>
+			<h3 className="text-2xl font-bold leading-8 tracking-tight">Monthly Top Albums</h3>
 			<TopAlbums />
+			<h3 className="text-2xl font-bold leading-8 tracking-tight">Monthly Top Artists</h3>
+			<TopArtists />
+			<h3 className="text-2xl font-bold leading-8 tracking-tight">Recent Podcasts</h3>
+			<SubscribedPodcasts />
 		</section>
 	)
 }

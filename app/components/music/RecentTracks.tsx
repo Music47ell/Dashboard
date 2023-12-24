@@ -1,18 +1,17 @@
 import { MediaCard } from '@/components/UI'
-import { getRecentTracks } from '@/lib/lastfm'
+import { getRecentTracks } from '@/lib/spotify'
 import { Song } from '@/lib/types'
 
 const getRecentTenTracks = async () => {
-	const { recenttracks: tracks } = await getRecentTracks()
-	const recentTracks = tracks.track.filter((track) => track['@attr']?.nowplaying !== 'true')
-		.filter((track) => track.image.find((image) => image.size === 'extralarge')?.['#text'] !== '')
-		.map((track) => ({
-			artist: track.artist['#text'],
-			songUrl: track.url,
-			title: track.name,
-			album: track.album['#text'],
-			albumImage: track.image.find((image) => image.size === 'extralarge')?.['#text']
-		})).slice(0, 10) as Song[]
+	const { items } = await getRecentTracks()
+	const recentTracks = items.map(({ track }) => ({
+		artist: track.artists ? track.artists.map((_artist) => _artist.name).join(', ') : '',
+		songUrl: track.external_urls?.spotify,
+		audioUrl: track?.preview_url,
+		title: track?.name,
+		album: track.album?.name,
+		albumImage: track.album?.images[0].url,
+	})) as Song[]
 
 	return recentTracks
 }
