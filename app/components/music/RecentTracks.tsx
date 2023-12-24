@@ -29,7 +29,13 @@ const RecentTracks = asyncComponent(async () => {
 	return (
 		<div className="grid gap-2 py-2 md:grid-cols-2">
 			{recentTracks.map((track, index) => (
-				<MediaCard key={index} title={track.title} image={track.albumImage} url={track.songUrl} />
+				<MediaCard
+					key={index}
+					title={track.title}
+					image={track.albumImage}
+					url={track.songUrl}
+					source="Spotify"
+				/>
 			))}
 		</div>
 	)

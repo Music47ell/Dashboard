@@ -33,6 +33,7 @@ const TopArtists = asyncComponent(async () => {
 					title={artist.title}
 					image={artist.albumImage}
 					url={artist.songUrl}
+					source="Spotify"
 				/>
 			))}
 		</div>

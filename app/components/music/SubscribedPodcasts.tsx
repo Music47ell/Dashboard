@@ -26,7 +26,13 @@ const RecentPodcasts = asyncComponent(async () => {
 	return (
 		<div className="grid gap-2 py-2 md:grid-cols-2">
 			{recentPodcasts.map((show, index) => (
-				<MediaCard key={index} title={show.title} image={show.podcastImage} url={show.podcastUrl} />
+				<MediaCard
+					key={index}
+					title={show.title}
+					image={show.podcastImage}
+					url={show.podcastUrl}
+					source="Spotify"
+				/>
 			))}
 		</div>
 	)
