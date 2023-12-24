@@ -1,17 +1,18 @@
 import type { Metadata } from 'next'
 
+import NewsletterForm from '@/components/NewsletterForm'
 import { SectionContainer } from '@/components/UI'
 import { PageTitle } from '@/components/UI'
 import { getSubscribersCount } from '@/lib/emailoctopus'
+import { getContentStats } from '@/lib/stats'
 import { getBlogViews } from '@/lib/views'
-import NewsletterForm from '@/components/NewsletterForm'
+
 import Codes from './components/codes'
 import Music from './components/music'
 import OverviewItem from './components/OverviewItem'
 import SectionHeading from './components/SectionHeading'
 import SectionSubHeading from './components/SectionSubHeading'
 import Shows from './components/shows'
-import { getContentStats } from '@/lib/stats'
 
 export const metadata: Metadata = {
 	title: 'Dashboard',
@@ -19,10 +20,7 @@ export const metadata: Metadata = {
 }
 
 export default async function Homepage() {
-	const [views, subscribers] = await Promise.all([
-		getBlogViews(),
-		getSubscribersCount(),
-	])
+	const [views, subscribers] = await Promise.all([getBlogViews(), getSubscribersCount()])
 	const siteStats = await getContentStats()
 
 	return (
@@ -48,10 +46,7 @@ export default async function Homepage() {
 			<div className="grid grid-cols-1 gap-3 lg:grid-cols-2 xl:grid-cols-2">
 				<OverviewItem label="All Posts Views" value={views.toLocaleString()} />
 				<OverviewItem label="Number of Posts" value={siteStats.numberOfPosts} />
-				<OverviewItem
-					label="Number of Words"
-					value={siteStats.numberOfWords.toLocaleString()}
-				/>
+				<OverviewItem label="Number of Words" value={siteStats.numberOfWords.toLocaleString()} />
 				<OverviewItem label="Newsletter Subscribers Count" value={subscribers.toLocaleString()} />
 			</div>
 			<hr className="my-6 border-gray-700" />
