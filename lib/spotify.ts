@@ -106,6 +106,22 @@ export const getTopTracks = async () => {
 	return topTracks
 }
 
+type TopArtists = {
+	items: {
+		name: string
+		artists: {
+			name: string
+		}
+		images: {
+			url: string
+		}[]
+		external_urls: {
+			spotify: string
+		}
+		preview_url: string
+	}[]
+}
+
 export const getTopArtists = async () => {
 	const { access_token } = await getAccessToken()
 
@@ -115,19 +131,9 @@ export const getTopArtists = async () => {
 		},
 		next: { revalidate: 60 },
 	})
-	const topArtists = (await response.json()) as TopTracks
+	const topArtists = (await response.json()) as TopArtists
 
 	return topArtists
-}
-
-export const getTracksUri = async () => {
-	const response = await fetch(RECOMMEND_PLAYLIST_ENDPOINT, {
-		headers: {
-			Authorization: `Bearer ${refresh_token}`,
-		},
-	}).then((res) => res.json())
-
-	return response
 }
 
 type RecentPodcasts = {
