@@ -14,19 +14,30 @@ const getCodeStatsTopLanguages = async () => {
 		name: 'React',
 		xps: jsXps + tsXps,
 		level: get_level(jsXps + tsXps),
-		percent: get_level_progress(jsXps + tsXps),
+		percent: get_level_progress(jsXps + tsXps)
 	})
-	delete data.languages['JavaScript (JSX)']
-	delete data.languages['TypeScript (JSX)']
-	Object.keys(data.languages).forEach((language) => {
-		const xps = data.languages[language].xps
-		languages.push({
-			name: language,
-			xps: xps,
-			level: get_level(xps),
-			percent: get_level_progress(xps),
-		})
-	})
+	data.languages['JavaScript·(JSX)'] = undefined
+	data.languages['TypeScript (JSX)'] = undefined
+	for (const language in data.languages) {
+		if (data.languages[language] !== undefined) {
+			languages.push({
+				name: language,
+				xps: data.languages[language].xps,
+				level: get_level(data.languages[language].xps),
+				percent: get_level_progress(data.languages[language].xps)
+			})
+		}
+	}
+
+	// Object.keys(data.languages).forEach((language) => {
+	// 	const xps = data.languages[language].xps
+	// 	languages.push({
+	// 		name: language,
+	// 		xps: xps,
+	// 		level: get_level(xps),
+	// 		percent: get_level_progress(xps),
+	// 	})
+	// })
 
 	const sortedLanguages = languages
 		.sort((a, b) => b.xps - a.xps)
@@ -36,7 +47,7 @@ const getCodeStatsTopLanguages = async () => {
 				name: language.name,
 				xps: language.xps,
 				level: language.level,
-				percent: language.percent,
+				percent: language.percent
 			}
 		})
 
@@ -57,9 +68,9 @@ const TopLanguages = asyncComponent(async () => {
 					Top Programming Languages I use
 				</p>
 				<div className="grid gap-2 px-4 py-3">
-					{sortedLanguages.map((language, index) => (
+					{sortedLanguages.map((language) => (
 						<Progress
-							key={index}
+							key={language.name}
 							data={language}
 							className="bg-gradient-to-r from-nfh-accent-secondary to-nfh-accent-primary"
 						/>

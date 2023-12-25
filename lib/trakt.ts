@@ -10,14 +10,14 @@ const WATCHED_SHOWS_ENDPOINT = `https://api.trakt.tv/users/${siteMetadata.author
 
 export const getStats = async () => {
 	if (TRAKT_CLIENT_ID === null || TRAKT_CLIENT_ID === undefined) {
-		throw new Error(`No Trakt API key found!`)
+		throw new Error('No Trakt API key found!')
 	}
 	const response = await fetch(STATS_ENDPOINT, {
 		headers: {
 			'content-type': 'application/json',
 			'trakt-api-version': '2',
-			'trakt-api-key': TRAKT_CLIENT_ID,
-		},
+			'trakt-api-key': TRAKT_CLIENT_ID
+		}
 	})
 
 	const stats = (await response.json()) as Trakt
@@ -25,17 +25,23 @@ export const getStats = async () => {
 	return stats
 }
 
-export const getWatchedMovies = async () => {
+interface Movie {
+	title: string
+	poster: string
+	url: string
+}
+
+export const getWatchedMovies = async (): Promise<Movie[]> => {
 	if (TRAKT_CLIENT_ID === null || TRAKT_CLIENT_ID === undefined) {
-		throw new Error(`No Trakt API key found!`)
+		throw new Error('No Trakt API key found!')
 	}
 	const response = await fetch(WATCHED_MOVIES_ENDPOINT, {
 		headers: {
 			'content-type': 'application/json',
 			'trakt-api-version': '2',
-			'trakt-api-key': TRAKT_CLIENT_ID,
+			'trakt-api-key': TRAKT_CLIENT_ID
 		},
-		next: { revalidate: 1320 },
+		next: { revalidate: 1320 }
 	})
 
 	const stats = (await response.json()) as TraktMovie[]
@@ -43,11 +49,11 @@ export const getWatchedMovies = async () => {
 	const ids = stats
 		.map((movie: { movie: { ids: { tmdb: number } } }) => {
 			return {
-				tmdb: movie.movie.ids.tmdb,
+				tmdb: movie.movie.ids.tmdb
 			}
 		})
 		.filter(
-			(movie: { tmdb: number }, index: number, self: any[]) =>
+			(movie: { tmdb: number }, index: number, self: { tmdb: number }[]) =>
 				self.findIndex((s: { tmdb: number }) => s.tmdb === movie.tmdb) === index
 		)
 		.slice(0, 10)
@@ -62,7 +68,7 @@ export const getWatchedMovies = async () => {
 			return {
 				title,
 				poster,
-				url,
+				url
 			}
 		})
 	)
@@ -70,17 +76,23 @@ export const getWatchedMovies = async () => {
 	return movies
 }
 
-export const getWatchedShows = async () => {
+interface Show {
+	title: string
+	poster: string
+	url: string
+}
+
+export const getWatchedShows = async (): Promise<Show[]> => {
 	if (TRAKT_CLIENT_ID === null || TRAKT_CLIENT_ID === undefined) {
-		throw new Error(`No Trakt API key found!`)
+		throw new Error('No Trakt API key found!')
 	}
 	const response = await fetch(WATCHED_SHOWS_ENDPOINT, {
 		headers: {
 			'content-type': 'application/json',
 			'trakt-api-version': '2',
-			'trakt-api-key': TRAKT_CLIENT_ID,
+			'trakt-api-key': TRAKT_CLIENT_ID
 		},
-		next: { revalidate: 1320 },
+		next: { revalidate: 1320 }
 	})
 
 	const stats = (await response.json()) as TraktShow[]
@@ -88,11 +100,11 @@ export const getWatchedShows = async () => {
 	const ids = stats
 		.map((show: { show: { ids: { tmdb: number } } }) => {
 			return {
-				tmdb: show.show.ids.tmdb,
+				tmdb: show.show.ids.tmdb
 			}
 		}, [])
 		.filter(
-			(show: { tmdb: number }, index: number, self: any[]) =>
+			(show: { tmdb: number }, index: number, self: { tmdb: number }[]) =>
 				self.findIndex((s: { tmdb: number }) => s.tmdb === show.tmdb) === index
 		)
 		.slice(0, 10)
@@ -107,7 +119,7 @@ export const getWatchedShows = async () => {
 			return {
 				title,
 				poster,
-				url,
+				url
 			}
 		})
 	)

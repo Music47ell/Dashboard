@@ -6,12 +6,13 @@ const client_secret = process.env.SPOTIFY_CLIENT_SECRET
 const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN
 
 const basic = Buffer.from(`${client_id}:${client_secret}`).toString('base64')
-const RECENT_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/player/recently-played?limit=10`
-const TOP_ARTISTS_ENDPOINT = `https://api.spotify.com/v1/me/top/artists?limit=10`
-const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks?limit=10`
-const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`
-const RECENT_PODCAST_ENDPOINT = `https://api.spotify.com/v1/me/player/recently-played?limit=10&type=episode`
-const SHOWS_ENDPOINT = `https://api.spotify.com/v1/me/shows?limit=10&offset=0`
+const RECENT_TRACKS_ENDPOINT = 'https://api.spotify.com/v1/me/player/recently-played?limit=10'
+const TOP_ARTISTS_ENDPOINT = 'https://api.spotify.com/v1/me/top/artists?limit=10'
+const TOP_TRACKS_ENDPOINT = 'https://api.spotify.com/v1/me/top/tracks?limit=10'
+const TOKEN_ENDPOINT = 'https://accounts.spotify.com/api/token'
+const RECENT_PODCAST_ENDPOINT =
+	'https://api.spotify.com/v1/me/player/recently-played?limit=10&type=episode'
+const SHOWS_ENDPOINT = 'https://api.spotify.com/v1/me/shows?limit=10&offset=0'
 
 export const getClientCredentialToken = async () => {
 	const response = await fetch(TOKEN_ENDPOINT, {
@@ -19,8 +20,8 @@ export const getClientCredentialToken = async () => {
 		body: 'grant_type=client_credentials',
 		headers: {
 			'Content-Type': 'application/x-www-form-urlencoded',
-			Authorization: `Basic ${basic}`,
-		},
+			Authorization: `Basic ${basic}`
+		}
 	})
 
 	return response.json()
@@ -35,9 +36,9 @@ export const getAccessToken = async () => {
 		method: 'POST',
 		headers: {
 			Authorization: `Basic ${basic}`,
-			'Content-Type': 'application/x-www-form-urlencoded',
+			'Content-Type': 'application/x-www-form-urlencoded'
 		},
-		body: searchParams.toString(),
+		body: searchParams.toString()
 	})
 
 	return response.json()
@@ -66,9 +67,9 @@ export const getRecentTracks = async () => {
 	const { access_token } = await getAccessToken()
 	const response = await fetch(RECENT_TRACKS_ENDPOINT, {
 		headers: {
-			Authorization: `Bearer ${access_token}`,
+			Authorization: `Bearer ${access_token}`
 		},
-		next: { revalidate: 60 },
+		next: { revalidate: 60 }
 	})
 	const recentTracks = (await response.json()) as RecentTracks
 
@@ -97,9 +98,9 @@ export const getTopTracks = async () => {
 
 	const response = await fetch(TOP_TRACKS_ENDPOINT, {
 		headers: {
-			Authorization: `Bearer ${access_token}`,
+			Authorization: `Bearer ${access_token}`
 		},
-		next: { revalidate: 60 },
+		next: { revalidate: 60 }
 	})
 	const topTracks = (await response.json()) as TopTracks
 
@@ -127,9 +128,9 @@ export const getTopArtists = async () => {
 
 	const response = await fetch(TOP_ARTISTS_ENDPOINT, {
 		headers: {
-			Authorization: `Bearer ${access_token}`,
+			Authorization: `Bearer ${access_token}`
 		},
-		next: { revalidate: 60 },
+		next: { revalidate: 60 }
 	})
 	const topArtists = (await response.json()) as TopArtists
 
@@ -156,9 +157,9 @@ export const getRecentPodcasts = async () => {
 	const { access_token } = await getAccessToken()
 	const response = await fetch(RECENT_PODCAST_ENDPOINT, {
 		headers: {
-			Authorization: `Bearer ${access_token}`,
+			Authorization: `Bearer ${access_token}`
 		},
-		next: { revalidate: 60 },
+		next: { revalidate: 60 }
 	})
 	const recentPodcasts = (await response.json()) as RecentPodcasts
 
@@ -182,9 +183,9 @@ export const getSubscribedShows = async () => {
 	const { access_token } = await getAccessToken()
 	const response = await fetch(SHOWS_ENDPOINT, {
 		headers: {
-			Authorization: `Bearer ${access_token}`,
+			Authorization: `Bearer ${access_token}`
 		},
-		next: { revalidate: 60 },
+		next: { revalidate: 60 }
 	})
 	const subscribedShows = (await response.json()) as SubscribedShows
 

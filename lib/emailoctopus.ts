@@ -10,8 +10,8 @@ export const getSubscribersCount = cache(async () => {
 	const response = await fetch(`${API_URL}/lists/${LIST_ID}?api_key=${API_KEY}`, {
 		method: 'GET',
 		headers: {
-			'Content-Type': 'application/json',
-		},
+			'Content-Type': 'application/json'
+		}
 	})
 	const data = await response.json()
 

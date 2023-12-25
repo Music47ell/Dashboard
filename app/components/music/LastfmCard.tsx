@@ -21,7 +21,7 @@ const getLastFmStats = async () => {
 		playCount: playcount,
 		tracksCount: track_count,
 		registeredDate,
-		averagePlayCount,
+		averagePlayCount
 	}
 }
 

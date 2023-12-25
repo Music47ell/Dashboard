@@ -7,16 +7,16 @@ import { getSubscribersCount } from '@/lib/emailoctopus'
 import { getContentStats } from '@/lib/stats'
 import { getBlogViews } from '@/lib/views'
 
-import Codes from './components/codes'
-import Music from './components/music'
 import OverviewItem from './components/OverviewItem'
 import SectionHeading from './components/SectionHeading'
 import SectionSubHeading from './components/SectionSubHeading'
+import Codes from './components/codes'
+import Music from './components/music'
 import Shows from './components/shows'
 
 export const metadata: Metadata = {
 	title: 'Dashboard',
-	description: 'Dashboard for my recent activity.',
+	description: 'Dashboard for my recent activity.'
 }
 
 export default async function Homepage() {

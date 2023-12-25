@@ -18,8 +18,10 @@ const Progress = ({ data, className }: ProgressProps) => {
 				<span className="text-xs text-neutral-400">XP {displayNumbers.format(xps)}</span>
 			</div>
 			<div className="relative flex h-3 flex-1 justify-center rounded-full bg-nfh-background-secondary">
-				<span className={`absolute left-0 top-0 h-3 rounded-full px-3 ${className}`}
-					style={{ width: `${percent}%`, transition: 'width 0.8s' }}>
+				<span
+					className={`absolute left-0 top-0 h-3 rounded-full px-3 ${className}`}
+					style={{ width: `${percent}%`, transition: 'width 0.8s' }}
+				>
 					&ensp;
 				</span>
 			</div>

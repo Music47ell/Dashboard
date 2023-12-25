@@ -6,7 +6,7 @@ import { PageTitle } from '@/components/UI'
 
 export const metadata: Metadata = {
 	title: '404 Not Found (╯°□°）╯︵ ┻━┻',
-	description: 'Out of all the pages you could have visited, you chose this one.',
+	description: 'Out of all the pages you could have visited, you chose this one.'
 }
 
 export default function NotFound() {
@@ -26,7 +26,10 @@ export default function NotFound() {
 						But don't worry, you can find plenty of other things on our homepage.
 					</p>
 					<Link href="/">
-						<button className="inline rounded-lg border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium leading-5 text-white shadow transition-colors duration-150 hover:bg-blue-700 focus:outline-none">
+						<button
+							type="submit"
+							className="inline rounded-lg border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium leading-5 text-white shadow transition-colors duration-150 hover:bg-blue-700 focus:outline-none"
+						>
 							Back to homepage
 						</button>
 					</Link>

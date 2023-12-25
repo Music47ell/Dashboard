@@ -33,6 +33,7 @@ export default function HCard(): JSX.Element {
 						fill="none"
 						className="p-country-flag inline"
 					>
+						<title>{siteMetadata.author.location.country}</title>
 						<path fill="#E30A17" d="M47 0H0V31H47V0Z" />
 						<path
 							fill="#FFFFFF"

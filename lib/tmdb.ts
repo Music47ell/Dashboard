@@ -4,7 +4,7 @@ const TMDB_API_TOKEN = process.env.TMDB_API_TOKEN
 
 export const getTMDBData = async (id: number, type: 'movies' | 'shows') => {
 	if (TMDB_API_TOKEN === null || TMDB_API_TOKEN === undefined) {
-		throw new Error(`No TMDB API key found!`)
+		throw new Error('No TMDB API key found!')
 	}
 
 	const endpoint =
@@ -15,7 +15,7 @@ export const getTMDBData = async (id: number, type: 'movies' | 'shows') => {
 	return fetch(endpoint, {
 		headers: {
 			Authorization: `Bearer ${TMDB_API_TOKEN}`,
-			'Content-Type': 'application/json;charset=utf-8',
-		},
+			'Content-Type': 'application/json;charset=utf-8'
+		}
 	})
 }

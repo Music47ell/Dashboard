@@ -9,7 +9,7 @@ const getTopTenArtists = async () => {
 		songUrl: artist.external_urls.spotify,
 		audioUrl: artist.preview_url,
 		title: artist.name,
-		albumImage: artist.images[0].url,
+		albumImage: artist.images[0].url
 	})) as Song[]
 
 	return topArtists
@@ -27,9 +27,9 @@ const TopArtists = asyncComponent(async () => {
 
 	return (
 		<div className="grid gap-2 py-2 md:grid-cols-2">
-			{topArtists.map((artist, index) => (
+			{topArtists.map((artist) => (
 				<MediaCard
-					key={index}
+					key={artist.title}
 					title={artist.title}
 					image={artist.albumImage}
 					url={artist.songUrl}

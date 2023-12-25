@@ -8,7 +8,7 @@ const STATS_ENDPOINT = `http://ws.audioscrobbler.com/2.0/?method=user.getinfo&us
 
 export const getStats = async () => {
 	if (LASTFM_API_KEY === null || LASTFM_API_KEY === undefined) {
-		throw new Error(`No Trakt API key found!`)
+		throw new Error('No Trakt API key found!')
 	}
 	const response = await fetch(STATS_ENDPOINT)
 

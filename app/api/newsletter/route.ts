@@ -9,10 +9,10 @@ const API_URL = 'https://emailoctopus.com/api/1.6'
 const requestBodySchema = z.object({
 	api_key: z.string(),
 	email_address: z.string().email(),
-	status: z.string(),
+	status: z.string()
 })
 
-export const POST = async (req: NextRequest, res: NextResponse) => {
+export const POST = async (req: NextRequest) => {
 	const body = await req.json()
 
 	const email = body.email
@@ -26,15 +26,15 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
 		const requestBody = requestBodySchema.parse({
 			api_key: API_KEY,
 			email_address: email,
-			status: 'SUBSCRIBED',
+			status: 'SUBSCRIBED'
 		})
 		// Make the request to EmailOctopus
 		const response = await fetch(`${API_URL}/lists/${LIST_ID}/contacts`, {
 			method: 'POST',
 			body: JSON.stringify(requestBody),
 			headers: {
-				'Content-Type': 'application/json',
-			},
+				'Content-Type': 'application/json'
+			}
 		})
 
 		if (response.status >= 400) {

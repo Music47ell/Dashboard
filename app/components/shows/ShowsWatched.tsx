@@ -19,9 +19,9 @@ const ShowsWatched = asyncComponent(async () => {
 
 	return (
 		<div className="grid gap-2 md:grid-cols-2">
-			{shows.map((show, index) => (
+			{shows.map((show) => (
 				<MediaCard
-					key={index}
+					key={show.title}
 					title={show.title}
 					image={show.poster}
 					url={show.url}

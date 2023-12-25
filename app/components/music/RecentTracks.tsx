@@ -10,7 +10,7 @@ const getRecentTenTracks = async () => {
 		audioUrl: track?.preview_url,
 		title: track?.name,
 		album: track.album?.name,
-		albumImage: track.album?.images[0].url,
+		albumImage: track.album?.images[0].url
 	})) as Song[]
 
 	return recentTracks
@@ -28,9 +28,9 @@ const RecentTracks = asyncComponent(async () => {
 
 	return (
 		<div className="grid gap-2 py-2 md:grid-cols-2">
-			{recentTracks.map((track, index) => (
+			{recentTracks.map((track) => (
 				<MediaCard
-					key={index}
+					key={track.title}
 					title={track.title}
 					image={track.albumImage}
 					url={track.songUrl}

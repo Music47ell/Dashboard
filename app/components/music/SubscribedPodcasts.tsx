@@ -7,7 +7,7 @@ const getRecentTenPodcasts = async () => {
 	const subscribedShows = items.map(({ show }) => ({
 		podcastUrl: show.external_urls?.spotify,
 		title: show.name,
-		podcastImage: show.images[0].url,
+		podcastImage: show.images[0].url
 	})) as Podcast[]
 
 	return subscribedShows
@@ -25,9 +25,9 @@ const RecentPodcasts = asyncComponent(async () => {
 
 	return (
 		<div className="grid gap-2 py-2 md:grid-cols-2">
-			{recentPodcasts.map((show, index) => (
+			{recentPodcasts.map((show) => (
 				<MediaCard
-					key={index}
+					key={show.title}
 					title={show.title}
 					image={show.podcastImage}
 					url={show.podcastUrl}

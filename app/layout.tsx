@@ -8,7 +8,7 @@ import siteMetadata from '@/data/siteMetadata'
 export const metadata: Metadata = {
 	title: {
 		default: siteMetadata.title,
-		template: '%s | ' + siteMetadata.title,
+		template: `%s | ${siteMetadata.title}`
 	},
 	description: siteMetadata.description,
 	openGraph: {
@@ -21,11 +21,11 @@ export const metadata: Metadata = {
 				url: `${siteMetadata.siteUrl}/api/og/image?title=News47ell`,
 				width: 1920,
 				height: 1080,
-				alt: siteMetadata.title,
-			},
+				alt: siteMetadata.title
+			}
 		],
 		locale: siteMetadata.locale,
-		type: 'website',
+		type: 'website'
 	},
 	robots: {
 		index: true,
@@ -35,21 +35,21 @@ export const metadata: Metadata = {
 			follow: true,
 			'max-video-preview': -1,
 			'max-image-preview': 'large',
-			'max-snippet': -1,
-		},
+			'max-snippet': -1
+		}
 	},
 	alternates: {
 		types: {
 			'application/rss+xml': `${siteMetadata.siteUrl}/blog/feed.xml`,
-			'application/json': `${siteMetadata.siteUrl}/blog/feed.json`,
-		},
+			'application/json': `${siteMetadata.siteUrl}/blog/feed.json`
+		}
 	},
 	twitter: {
 		card: 'summary_large_image',
 		title: siteMetadata.title,
 		description: siteMetadata.description,
 		site: siteMetadata.siteUrl,
-		images: [`${siteMetadata.siteUrl}/api/og/image?title=News47ell`],
+		images: [`${siteMetadata.siteUrl}/api/og/image?title=News47ell`]
 	},
 	icons: {
 		icon: '/favicons/android-chrome-512x512.png',
@@ -60,44 +60,44 @@ export const metadata: Metadata = {
 				rel: 'icon',
 				type: 'image/png',
 				sizes: '16x16',
-				url: '/favicons/favicon-16x16.png',
+				url: '/favicons/favicon-16x16.png'
 			},
 			{
 				rel: 'icon',
 				type: 'image/png',
 				sizes: '32x32',
-				url: '/favicons/favicon-32x32.png',
+				url: '/favicons/favicon-32x32.png'
 			},
 			{
 				rel: 'icon',
 				type: 'image/png',
 				sizes: '192x192',
-				url: '/favicons/android-chrome-192x192.png',
+				url: '/favicons/android-chrome-192x192.png'
 			},
 			{
 				rel: 'icon',
 				type: 'image/png',
 				sizes: '512x512',
-				url: '/favicons/android-chrome-512x512.png',
+				url: '/favicons/android-chrome-512x512.png'
 			},
 			{
 				rel: 'mask-icon',
-				url: '/favicons/safari-pinned-tab.svg',
-			},
-		],
+				url: '/favicons/safari-pinned-tab.svg'
+			}
+		]
 	},
 	manifest: '/favicons/site.webmanifest',
 	appleWebApp: {
-		title: siteMetadata.title,
+		title: siteMetadata.title
 	},
 	themeColor: [
 		{ media: '(prefers-color-scheme: light)', color: '#fff' },
-		{ media: '(prefers-color-scheme: dark)', color: '#000' },
+		{ media: '(prefers-color-scheme: dark)', color: '#000' }
 	],
 	other: {
 		webmention: `https://webmention.io/${siteMetadata.siteUrl}/webmention`,
-		pingback: `https://webmention.io/${siteMetadata.siteUrl}/xmlrpc`,
-	},
+		pingback: `https://webmention.io/${siteMetadata.siteUrl}/xmlrpc`
+	}
 }
 
 export default function RootLayout({ children }) {

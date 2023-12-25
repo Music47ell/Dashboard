@@ -17,14 +17,14 @@ export const getContentStats = async () => {
 		const parsedXml = parseXml(xml)
 
 		if (!parsedXml) {
-			throw new Error(`Error parsing XML feed`)
+			throw new Error('Error parsing XML feed')
 		}
 
 		const { postCount: numberOfPosts, wordCount: numberOfWords } = parsedXml
 
 		const stats = {
 			numberOfWords,
-			numberOfPosts,
+			numberOfPosts
 		}
 
 		return stats as stats

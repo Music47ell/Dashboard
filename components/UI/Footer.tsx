@@ -1,5 +1,5 @@
-import HCard from '@/components/hCard'
 import { default as Link } from '@/components/Link'
+import HCard from '@/components/hCard'
 import siteMetadata from '@/data/siteMetadata'
 
 export default function Footer(): JSX.Element {
@@ -8,16 +8,16 @@ export default function Footer(): JSX.Element {
 			<div className="m-auto flex max-w-md flex-col items-center">
 				<div className="grid grid-cols-1">
 					<div className="flex items-center justify-between space-x-3">
-						{siteMetadata.NavLinks.map((link, index) => (
-							<Link key={index} href={link.url}>
+						{siteMetadata.NavLinks.map((link) => (
+							<Link key={link.url} href={link.url}>
 								{link.title}
 							</Link>
 						))}
 					</div>
 					<HCard />
 					<div className="flex items-center justify-between space-x-3">
-						{siteMetadata.author.social.map((link, index) => (
-							<Link key={index} href={link.url}>
+						{siteMetadata.author.social.map((link) => (
+							<Link key={link.url} href={link.url}>
 								{link.title}
 							</Link>
 						))}

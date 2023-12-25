@@ -12,7 +12,7 @@ const siteMetadata = {
 		{ title: 'X', href: 'https://twitter.com/news47ell' },
 		{ title: 'Facebook', href: 'https://www.facebook.com/news47ell' },
 		{ title: 'LinkedIn', href: 'https://www.linkedin.com/company/news47ell' },
-		{ title: 'Mastodon', href: 'https://mastodon.social/@news47ell' },
+		{ title: 'Mastodon', href: 'https://mastodon.social/@news47ell' }
 	],
 	author: {
 		name: 'Ahmet ALMAZ',
@@ -21,22 +21,22 @@ const siteMetadata = {
 		avatar: '/images/others/me.png',
 		location: {
 			country: 'Türkiye',
-			emojiFlag: '🇹🇷',
+			emojiFlag: '🇹🇷'
 		},
 		social: [
 			{ title: 'X', url: 'https://twitter.com/music47ell' },
 			{ title: 'GitHub', url: 'https://github.com/music47ell' },
 			{ title: 'LinkedIn', url: 'https://www.linkedin.com/in/music47ell' },
-			{ title: 'Mastodon', url: 'https://mastodon.social/@music47ell' },
-		],
+			{ title: 'Mastodon', url: 'https://mastodon.social/@music47ell' }
+		]
 	},
 	NavLinks: [
 		{ title: 'Home', url: 'https://www.news47ell.com', activePath: /^\/$/ },
 		{ title: 'Blog', url: 'https://www.news47ell.com/blog', activePath: /^\/blog*/ },
 		{ title: 'Projects', url: 'https://www.news47ell.com/projects', activePath: /^\/projects*/ },
 		{ title: 'Colophon', url: 'https://www.news47ell.com/colophon', activePath: /^\/colophon*/ },
-		{ title: 'Sponsors', url: 'https://www.news47ell.com/sponsors', activePath: /^\/sponsors*/ },
-	],
+		{ title: 'Sponsors', url: 'https://www.news47ell.com/sponsors', activePath: /^\/sponsors*/ }
+	]
 }
 
 export default siteMetadata

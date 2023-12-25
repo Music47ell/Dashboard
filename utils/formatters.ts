@@ -4,12 +4,12 @@ const displayDateAndTime = (unix: number) => {
 	// human-readable date and time for display purposes (e.g. blog posts)
 	const time = new Date(unix * 1000).toLocaleTimeString(siteMetadata.locale, {
 		hour: 'numeric',
-		minute: 'numeric',
+		minute: 'numeric'
 	})
 	const date = new Date(unix * 1000).toLocaleDateString(siteMetadata.locale, {
 		year: 'numeric',
 		month: 'long',
-		day: 'numeric',
+		day: 'numeric'
 	})
 
 	return { time, date }
@@ -20,7 +20,7 @@ const displayDate = (date: string | number) => {
 	const options: Intl.DateTimeFormatOptions = {
 		year: 'numeric',
 		month: 'long',
-		day: 'numeric',
+		day: 'numeric'
 	}
 	const now = new Date(date).toLocaleDateString(siteMetadata.locale, options)
 
@@ -35,7 +35,7 @@ const hEntryDate = (date: string) => {
 }
 
 const displayNumbers = new Intl.NumberFormat('en-US', {
-	maximumFractionDigits: 0,
+	maximumFractionDigits: 0
 })
 
 export { displayDate, displayDateAndTime, displayNumbers, hEntryDate }

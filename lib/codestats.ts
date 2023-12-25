@@ -1,7 +1,7 @@
 import 'server-only'
 
 import siteMetadata from '@/data/siteMetadata'
-const API_ENDPOINT = `https://codestats.net/api/users/`
+const API_ENDPOINT = 'https://codestats.net/api/users/'
 import { CodeStats, Languages } from '@/lib/types'
 
 export const getCodeStats = async () => {

@@ -19,9 +19,9 @@ const MoviesWatched = asyncComponent(async () => {
 
 	return (
 		<div className="grid gap-2 md:grid-cols-2">
-			{movies.map((movie, index) => (
+			{movies.map((movie) => (
 				<MediaCard
-					key={index}
+					key={movie.title}
 					title={movie.title}
 					image={movie.poster}
 					url={movie.url}

@@ -33,7 +33,7 @@ export default function MediaCard({ source, title, image, url }: MediaCardProps)
 					loading="lazy"
 				/>
 			) : (
-				<div className="h-full w-full animate-pulse bg-white"></div>
+				<div className="h-full w-full animate-pulse bg-white" />
 			)}
 			<div>
 				<p className="origin-left text-base font-semibold text-white md:text-xl">{title}</p>
