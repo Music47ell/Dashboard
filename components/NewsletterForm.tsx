@@ -4,15 +4,7 @@ import React, { useRef, useState } from 'react'
 
 import siteMetadata from '@/data/siteMetadata'
 
-export interface NewsletterFormProps {
-	title?: string
-	apiUrl?: string
-}
-
-const NewsletterForm = ({
-	title = 'Sign up to the newsletter',
-	apiUrl = `${siteMetadata.siteUrl}/api/newsletter`
-}: NewsletterFormProps) => {
+const NewsletterForm = () => {
 	const inputEl = useRef<HTMLInputElement>(null)
 	const [error, setError] = useState(false)
 	const [message, setMessage] = useState('')
@@ -32,7 +24,7 @@ const NewsletterForm = ({
 
 		setLoading(true)
 
-		const res = await fetch(apiUrl, {
+		const res = await fetch(`${siteMetadata.siteUrl}/api/newsletter`, {
 			body: JSON.stringify({
 				email: inputEl.current.value
 			}),
@@ -60,15 +52,15 @@ const NewsletterForm = ({
 		<section className="bg-nfh-background-secondary">
 			<div className="mx-auto max-w-screen-xl px-4 py-8">
 				<div className="not-prose mx-auto max-w-screen-md sm:text-center">
-					<h2 className="mb-4 text-3xl tracking-tight text-nfh-text-primary sm:text-4xl">
-						{title}
+					<h2 className="text-nfh-text-primary mb-4 text-3xl tracking-tight sm:text-4xl">
+						Sign up to the newsletter
 					</h2>
 					<form onSubmit={subscribe}>
 						<div className="mx-auto max-w-screen-sm items-center space-y-4 sm:flex sm:space-y-0">
 							<div className="relative w-full">
 								<label
 									htmlFor="email-input"
-									className="mb-2 hidden text-sm font-medium text-nfh-text-primary"
+									className="text-nfh-text-primary mb-2 hidden text-sm font-medium"
 								>
 									Email address
 								</label>
@@ -91,7 +83,7 @@ const NewsletterForm = ({
 										subscribed
 											? 'bg-nfh-background-secondary placeholder:text-nfh-text-secondary'
 											: 'bg-nfh-background-primary placeholder:text-nfh-text-primary'
-									} block w-full border border-nfh-accent-primary bg-nfh-background-primary p-3 pl-10 text-sm focus:border-nfh-accent-secondary focus:ring-nfh-accent-secondary`}
+									} border-nfh-accent-primary bg-nfh-background-primary focus:border-nfh-accent-secondary focus:ring-nfh-accent-secondary block w-full border p-3 pl-10 text-sm`}
 									autoComplete="email"
 									id="email-input"
 									name="email"
@@ -106,7 +98,7 @@ const NewsletterForm = ({
 								{!subscribed && (
 									<button
 										type="submit"
-										className="w-full border border-nfh-accent-primary px-5 py-3 text-center text-sm font-medium text-nfh-text-primary focus:ring-4 focus:ring-nfh-accent-secondary"
+										className="border-nfh-accent-primary text-nfh-text-primary focus:ring-nfh-accent-secondary w-full border px-5 py-3 text-center text-sm font-medium focus:ring-4"
 										disabled={subscribed}
 									>
 										Subscribe

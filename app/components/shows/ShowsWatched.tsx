@@ -1,11 +1,5 @@
 import { MediaCard } from '@/components/UI'
-import { getWatchedShows } from '@/lib/trakt'
-
-const getTraktShows = async () => {
-	const data = await getWatchedShows()
-
-	return data
-}
+import siteMetadata from '@/data/siteMetadata'
 
 /**
  * https://gist.github.com/cramforce/b5e3f0b103f841d2e5e429b1d5ac4ded
@@ -15,7 +9,11 @@ function asyncComponent<T, R>(fn: (arg: T) => Promise<R>): (arg: T) => R {
 }
 
 const ShowsWatched = asyncComponent(async () => {
-	const shows = await getTraktShows()
+	const shows = await fetch(`${siteMetadata.siteUrl}/api/watched/shows`, {
+		next: {
+			revalidate: 3600
+		}
+	}).then((res) => res.json())
 
 	return (
 		<div className="grid gap-2 md:grid-cols-2">

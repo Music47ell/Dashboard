@@ -3,9 +3,7 @@ import type { Metadata } from 'next'
 import NewsletterForm from '@/components/NewsletterForm'
 import { SectionContainer } from '@/components/UI'
 import { PageTitle } from '@/components/UI'
-import { getSubscribersCount } from '@/lib/emailoctopus'
-import { getContentStats } from '@/lib/stats'
-import { getBlogViews } from '@/lib/views'
+import siteMetadata from '@/data/siteMetadata'
 
 import OverviewItem from './components/OverviewItem'
 import SectionHeading from './components/SectionHeading'
@@ -15,13 +13,26 @@ import Music from './components/music'
 import Shows from './components/shows'
 
 export const metadata: Metadata = {
-	title: 'Dashboard',
+	title: `Dashboard - ${siteMetadata.title}`,
 	description: 'Dashboard for my recent activity.'
 }
 
 export default async function Homepage() {
-	const [views, subscribers] = await Promise.all([getBlogViews(), getSubscribersCount()])
-	const siteStats = await getContentStats()
+	const views = await fetch(`${siteMetadata.siteUrl}/api/views`, {
+		next: {
+			revalidate: 3600
+		}
+	}).then((res) => res.json())
+	const stats = await fetch(`${siteMetadata.siteUrl}/api/stats`, {
+		next: {
+			revalidate: 86400
+		}
+	}).then((res) => res.json())
+	const subscribers = await fetch(`${siteMetadata.siteUrl}/api/stats/newsletter`, {
+		next: {
+			revalidate: 604800
+		}
+	}).then((res) => res.json())
 
 	return (
 		<SectionContainer>
@@ -45,8 +56,8 @@ export default async function Homepage() {
 			</section>
 			<div className="grid grid-cols-1 gap-3 lg:grid-cols-2 xl:grid-cols-2">
 				<OverviewItem label="All Posts Views" value={views.toLocaleString()} />
-				<OverviewItem label="Number of Posts" value={siteStats.numberOfPosts} />
-				<OverviewItem label="Number of Words" value={siteStats.numberOfWords.toLocaleString()} />
+				<OverviewItem label="Number of Posts" value={stats.numberOfPosts} />
+				<OverviewItem label="Number of Words" value={stats.numberOfWords.toLocaleString()} />
 				<OverviewItem label="Newsletter Subscribers Count" value={subscribers.toLocaleString()} />
 			</div>
 			<hr className="my-6 border-gray-700" />

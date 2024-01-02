@@ -1,20 +1,5 @@
 import { MediaCard } from '@/components/UI'
-import { getTopTracks } from '@/lib/spotify'
-import { Song } from '@/lib/types'
-
-const getTopTenTracks = async () => {
-	const { items } = await getTopTracks()
-	const topTracks = items.map((track) => ({
-		artist: track.artists.map((_artist) => _artist.name).join(', '),
-		songUrl: track.external_urls.spotify,
-		audioUrl: track.preview_url,
-		title: track.name,
-		album: track.album.name,
-		albumImage: track.album.images[0].url
-	})) as Song[]
-
-	return topTracks
-}
+import siteMetadata from '@/data/siteMetadata'
 
 /**
  * https://gist.github.com/cramforce/b5e3f0b103f841d2e5e429b1d5ac4ded
@@ -24,7 +9,11 @@ function asyncComponent<T, R>(fn: (arg: T) => Promise<R>): (arg: T) => R {
 }
 
 const TopTracks = asyncComponent(async () => {
-	const topTracks = await getTopTenTracks()
+	const topTracks = await fetch(`${siteMetadata.siteUrl}/api/top/tracks`, {
+		next: {
+			revalidate: 3600
+		}
+	}).then((res) => res.json())
 
 	return (
 		<div className="grid gap-2 py-2 md:grid-cols-2">

@@ -1,17 +1,5 @@
 import { MediaCard } from '@/components/UI'
-import { getSubscribedShows } from '@/lib/spotify'
-import { Podcast } from '@/lib/types'
-
-const getRecentTenPodcasts = async () => {
-	const { items } = await getSubscribedShows()
-	const subscribedShows = items.map(({ show }) => ({
-		podcastUrl: show.external_urls?.spotify,
-		title: show.name,
-		podcastImage: show.images[0].url
-	})) as Podcast[]
-
-	return subscribedShows
-}
+import siteMetadata from '@/data/siteMetadata'
 
 /**
  * https://gist.github.com/cramforce/b5e3f0b103f841d2e5e429b1d5ac4ded
@@ -21,7 +9,11 @@ function asyncComponent<T, R>(fn: (arg: T) => Promise<R>): (arg: T) => R {
 }
 
 const RecentPodcasts = asyncComponent(async () => {
-	const recentPodcasts = await getRecentTenPodcasts()
+	const recentPodcasts = await fetch(`${siteMetadata.siteUrl}/api/recent/podcasts`, {
+		next: {
+			revalidate: 3600
+		}
+	}).then((res) => res.json())
 
 	return (
 		<div className="grid gap-2 py-2 md:grid-cols-2">

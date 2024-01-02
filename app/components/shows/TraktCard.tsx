@@ -1,13 +1,6 @@
-import { getStats } from '@/lib/trakt'
+import siteMetadata from '@/data/siteMetadata'
 import { displayNumbers } from '@/utils/formatters'
-
 import OverviewItem from '../../components/OverviewItem'
-
-const getTraktStats = async () => {
-	const data = await getStats()
-
-	return data
-}
 
 /**
  * https://gist.github.com/cramforce/b5e3f0b103f841d2e5e429b1d5ac4ded
@@ -17,7 +10,11 @@ function asyncComponent<T, R>(fn: (arg: T) => Promise<R>): (arg: T) => R {
 }
 
 const TraktCard = asyncComponent(async () => {
-	const stats = await getTraktStats()
+	const stats = await fetch(`${siteMetadata.siteUrl}/api/stats/trakt`, {
+		next: {
+			revalidate: 3600
+		}
+	}).then((res) => res.json())
 
 	return (
 		<div className="mb-1 grid gap-3 py-2 md:grid-cols-2">

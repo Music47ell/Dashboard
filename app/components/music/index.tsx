@@ -4,8 +4,8 @@ import siteMetadata from '@/data/siteMetadata'
 import SectionHeading from '../SectionHeading'
 import SectionSubHeading from '../SectionSubHeading'
 import LastfmCard from './LastfmCard'
+import RecentPodcasts from './RecentPodcasts'
 import RecentTracks from './RecentTracks'
-import SubscribedPodcasts from './SubscribedPodcasts'
 import TopAlbums from './TopAlbums'
 import TopArtists from './TopArtists'
 
@@ -38,7 +38,7 @@ export default function Music() {
 			<h3 className="text-2xl font-bold leading-8 tracking-tight">Monthly Top Artists</h3>
 			<TopArtists />
 			<h3 className="text-2xl font-bold leading-8 tracking-tight">Recent Podcasts</h3>
-			<SubscribedPodcasts />
+			<RecentPodcasts />
 		</section>
 	)
 }
