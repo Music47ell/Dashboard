@@ -18,21 +18,25 @@ export const metadata: Metadata = {
 }
 
 export default async function Homepage() {
-	const views = await fetch(`${siteMetadata.siteUrl}/api/views`, {
-		next: {
-			revalidate: 3600
-		}
-	}).then((res) => res.json())
-	const stats = await fetch(`${siteMetadata.siteUrl}/api/stats`, {
-		next: {
-			revalidate: 86400
-		}
-	}).then((res) => res.json())
-	const subscribers = await fetch(`${siteMetadata.siteUrl}/api/stats/newsletter`, {
-		next: {
-			revalidate: 604800
-		}
-	}).then((res) => res.json())
+	const [views, stats, subscribers] = await Promise.all([
+		fetch(`${siteMetadata.siteUrl}/api/views`, {
+			next: {
+				revalidate: 3600
+			}
+		}).then((res) => res.json()),
+
+		fetch(`${siteMetadata.siteUrl}/api/stats`, {
+			next: {
+				revalidate: 86400
+			}
+		}).then((res) => res.json()),
+
+		fetch(`${siteMetadata.siteUrl}/api/stats/newsletter`, {
+			next: {
+				revalidate: 604800
+			}
+		}).then((res) => res.json())
+	])
 
 	return (
 		<SectionContainer>
