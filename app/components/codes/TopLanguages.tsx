@@ -7,11 +7,13 @@ function asyncComponent<T, R>(fn: (arg: T) => Promise<R>): (arg: T) => R {
 }
 
 const TopLanguages = asyncComponent(async () => {
-	const data = await fetch(`${siteMetadata.siteUrl}/api/top/languages`, {
+	const topLanguagesData = await fetch(`${siteMetadata.siteUrl}/api/top/languages`, {
 		next: {
 			revalidate: 3600
 		}
-	}).then((res) => res.json())
+	})
+
+	const topLanguages = await topLanguagesData.json()
 
 	return (
 		<div className="from-nfh-accent-secondary to-nfh-accent-primary relative flex flex-1 flex-col gap-2 rounded-lg bg-gradient-to-r p-[2px]">
@@ -20,7 +22,7 @@ const TopLanguages = asyncComponent(async () => {
 					Top Programming Languages I use
 				</p>
 				<div className="grid gap-2 px-4 py-3">
-					{data.map((language) => (
+					{topLanguages.map((language) => (
 						<Progress
 							key={language.name}
 							data={language}

@@ -9,11 +9,13 @@ function asyncComponent<T, R>(fn: (arg: T) => Promise<R>): (arg: T) => R {
 }
 
 const LastfmCard = asyncComponent(async () => {
-	const stats = await fetch(`${siteMetadata.siteUrl}/api/stats/lastfm`, {
+	const statsData = await fetch(`${siteMetadata.siteUrl}/api/stats/lastfm`, {
 		next: {
 			revalidate: 3600
 		}
-	}).then((res) => res.json())
+	})
+
+	const stats = await statsData.json()
 
 	return (
 		<div className="mb-1 grid gap-3 py-2 md:grid-cols-2">

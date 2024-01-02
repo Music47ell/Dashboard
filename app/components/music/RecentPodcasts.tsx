@@ -9,11 +9,13 @@ function asyncComponent<T, R>(fn: (arg: T) => Promise<R>): (arg: T) => R {
 }
 
 const RecentPodcasts = asyncComponent(async () => {
-	const recentPodcasts = await fetch(`${siteMetadata.siteUrl}/api/recent/podcasts`, {
+	const recentPodcastsData = await fetch(`${siteMetadata.siteUrl}/api/recent/podcasts`, {
 		next: {
 			revalidate: 3600
 		}
-	}).then((res) => res.json())
+	})
+
+	const recentPodcasts = await recentPodcastsData.json()
 
 	return (
 		<div className="grid gap-2 py-2 md:grid-cols-2">
