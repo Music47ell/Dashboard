@@ -10,7 +10,7 @@ import SectionHeading from './components/SectionHeading'
 import SectionSubHeading from './components/SectionSubHeading'
 import Codes from './components/codes'
 import Music from './components/music'
-import Shows from './components/shows'
+// import Shows from "./components/shows";
 
 export const metadata: Metadata = {
 	title: `Dashboard - ${siteMetadata.title}`,
@@ -69,7 +69,7 @@ export default async function Homepage() {
 			<hr className="my-6 border-gray-700" />
 			<Music />
 			<hr className="my-6 border-gray-700" />
-			<Shows />
+			{/* <Shows /> */}
 		</SectionContainer>
 	)
 }
