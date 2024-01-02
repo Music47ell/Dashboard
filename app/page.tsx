@@ -9,7 +9,7 @@ import OverviewItem from './components/OverviewItem'
 import SectionHeading from './components/SectionHeading'
 import SectionSubHeading from './components/SectionSubHeading'
 import Codes from './components/codes'
-import Music from './components/music'
+// import Music from './components/music'
 // import Shows from "./components/shows";
 
 export const metadata: Metadata = {
@@ -67,7 +67,7 @@ export default async function Homepage() {
 			<hr className="my-6 border-gray-700" />
 			<Codes />
 			<hr className="my-6 border-gray-700" />
-			<Music />
+			{/* <Music /> */}
 			<hr className="my-6 border-gray-700" />
 			{/* <Shows /> */}
 		</SectionContainer>
