@@ -16,7 +16,7 @@ type LastfmStats = {
 }
 
 export default function LastfmCard(): JSX.Element {
-	const lastfmData = useSWR<LastfmStats>(`${siteMetadata.siteUrl}/api/lastfmStats/lastfm`, fetcher)
+	const lastfmData = useSWR<LastfmStats>(`${siteMetadata.siteUrl}/api/stats/lastfm`, fetcher)
 
 	const [lastfmStats, setLastfmStats] = useState<LastfmStats>({
 		registeredDate: '',

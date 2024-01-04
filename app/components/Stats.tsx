@@ -20,10 +20,10 @@ type Subscribers = {
 }
 
 export default function SiteStats(): JSX.Element {
-	const viewsData = useSWR<Views>(`${siteMetadata.siteUrl}/api/stats/views`, fetcher)
-	const statsData = useSWR<Stats>(`${siteMetadata.siteUrl}/api/stats/posts`, fetcher)
+	const viewsData = useSWR<Views>(`${siteMetadata.siteUrl}/api/views`, fetcher)
+	const statsData = useSWR<Stats>(`${siteMetadata.siteUrl}/api/stats/site`, fetcher)
 	const subscribersData = useSWR<Subscribers>(
-		`${siteMetadata.siteUrl}/api/stats/subscribers`,
+		`${siteMetadata.siteUrl}/api/stats/newsletter`,
 		fetcher
 	)
 
@@ -54,10 +54,13 @@ export default function SiteStats(): JSX.Element {
 
 	return (
 		<div className="grid grid-cols-1 gap-3 lg:grid-cols-2 xl:grid-cols-2">
-			<OverviewItem label="All Posts Views" value={views.toLocaleString()} />
-			<OverviewItem label="Number of Posts" value={stats.numberOfPosts} />
+			<OverviewItem label="All Posts Views" value={views.total} />
+			<OverviewItem label="Number of Posts" value={stats.numberOfPosts.toLocaleString()} />
 			<OverviewItem label="Number of Words" value={stats.numberOfWords.toLocaleString()} />
-			<OverviewItem label="Newsletter Subscribers Count" value={subscribers.toLocaleString()} />
+			<OverviewItem
+				label="Newsletter Subscribers Count"
+				value={subscribers.total.toLocaleString()}
+			/>
 		</div>
 	)
 }
