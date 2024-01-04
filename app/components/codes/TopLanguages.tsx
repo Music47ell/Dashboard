@@ -1,19 +1,27 @@
-import siteMetadata from '@/data/siteMetadata'
+'use client'
 
+import siteMetadata from '@/data/siteMetadata'
+import fetcher from '@/utils/fetcher'
+import { useEffect, useState } from 'react'
+import useSWR from 'swr'
 import Progress from './Progress'
 
-function asyncComponent<T, R>(fn: (arg: T) => Promise<R>): (arg: T) => R {
-	return fn as (arg: T) => R
+type Language = {
+	name: string
+	color: string
+	percent: number
 }
 
-const TopLanguages = asyncComponent(async () => {
-	const topLanguagesData = await fetch(`${siteMetadata.siteUrl}/api/top/languages`, {
-		next: {
-			revalidate: 3600
-		}
-	})
+export default function TopLanguages(): JSX.Element {
+	const topLanguagesData = useSWR<Language[]>(`${siteMetadata.siteUrl}/api/top/languages`, fetcher)
 
-	const topLanguages = await topLanguagesData.json()
+	const [topLanguages, setTopLanguages] = useState<Language[]>([])
+
+	useEffect(() => {
+		if (topLanguagesData.data) {
+			setTopLanguages(topLanguagesData.data)
+		}
+	}, [topLanguagesData.data])
 
 	return (
 		<div className="from-nfh-accent-secondary to-nfh-accent-primary relative flex flex-1 flex-col gap-2 rounded-lg bg-gradient-to-r p-[2px]">
@@ -33,6 +41,4 @@ const TopLanguages = asyncComponent(async () => {
 			</div>
 		</div>
 	)
-})
-
-export default TopLanguages
+}

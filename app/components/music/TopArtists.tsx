@@ -1,21 +1,27 @@
+'use client'
+
 import { MediaCard } from '@/components/UI'
 import siteMetadata from '@/data/siteMetadata'
+import fetcher from '@/utils/fetcher'
+import { useEffect, useState } from 'react'
+import useSWR from 'swr'
 
-/**
- * https://gist.github.com/cramforce/b5e3f0b103f841d2e5e429b1d5ac4ded
- */
-function asyncComponent<T, R>(fn: (arg: T) => Promise<R>): (arg: T) => R {
-	return fn as (arg: T) => R
+type Artist = {
+	title: string
+	albumImage: string
+	songUrl: string
 }
 
-const TopArtists = asyncComponent(async () => {
-	const topArtistsData = await fetch(`${siteMetadata.siteUrl}/api/top/artists`, {
-		next: {
-			revalidate: 3600
-		}
-	})
+export default function TopArtists(): JSX.Element {
+	const topArtistsData = useSWR<Artist[]>(`${siteMetadata.siteUrl}/api/top/artists`, fetcher)
 
-	const topArtists = await topArtistsData.json()
+	const [topArtists, setTopArtists] = useState<Artist[]>([])
+
+	useEffect(() => {
+		if (topArtistsData.data) {
+			setTopArtists(topArtistsData.data)
+		}
+	}, [topArtistsData.data])
 
 	return (
 		<div className="grid gap-2 py-2 md:grid-cols-2">
@@ -30,6 +36,4 @@ const TopArtists = asyncComponent(async () => {
 			))}
 		</div>
 	)
-})
-
-export default TopArtists
+}

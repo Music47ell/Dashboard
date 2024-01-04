@@ -1,31 +1,47 @@
+'use client'
+
 import siteMetadata from '@/data/siteMetadata'
+import fetcher from '@/utils/fetcher'
 import { displayNumbers } from '@/utils/formatters'
-import OverviewItem from '../../components/OverviewItem'
-/**
- * https://gist.github.com/cramforce/b5e3f0b103f841d2e5e429b1d5ac4ded
- */
-function asyncComponent<T, R>(fn: (arg: T) => Promise<R>): (arg: T) => R {
-	return fn as (arg: T) => R
+import { useEffect, useState } from 'react'
+import useSWR from 'swr'
+import OverviewItem from './../OverviewItem'
+
+type LastfmStats = {
+	registeredDate: string
+	artistsCount: number
+	tracksCount: number
+	playCount: number
+	averagePlayCount: number
 }
 
-const LastfmCard = asyncComponent(async () => {
-	const statsData = await fetch(`${siteMetadata.siteUrl}/api/stats/lastfm`, {
-		next: {
-			revalidate: 3600
-		}
+export default function LastfmCard(): JSX.Element {
+	const lastfmData = useSWR<LastfmStats>(`${siteMetadata.siteUrl}/api/lastfmStats/lastfm`, fetcher)
+
+	const [lastfmStats, setLastfmStats] = useState<LastfmStats>({
+		registeredDate: '',
+		artistsCount: 0,
+		tracksCount: 0,
+		playCount: 0,
+		averagePlayCount: 0
 	})
 
-	const stats = await statsData.json()
+	useEffect(() => {
+		if (lastfmData.data) {
+			setLastfmStats(lastfmData.data)
+		}
+	}, [lastfmData.data])
 
 	return (
 		<div className="mb-1 grid gap-3 py-2 md:grid-cols-2">
-			<OverviewItem label="Account Age" value={stats.registeredDate} />
-			<OverviewItem label="Artists" value={displayNumbers.format(stats.artistsCount)} />
-			<OverviewItem label="Tracks" value={displayNumbers.format(stats.tracksCount)} />
-			<OverviewItem label="Total Scrobbles" value={displayNumbers.format(stats.playCount)} />
-			<OverviewItem label="Average Play" value={displayNumbers.format(stats.averagePlayCount)} />
+			<OverviewItem label="Account Age" value={lastfmStats.registeredDate} />
+			<OverviewItem label="Artists" value={displayNumbers.format(lastfmStats.artistsCount)} />
+			<OverviewItem label="Tracks" value={displayNumbers.format(lastfmStats.tracksCount)} />
+			<OverviewItem label="Total Scrobbles" value={displayNumbers.format(lastfmStats.playCount)} />
+			<OverviewItem
+				label="Average Play"
+				value={displayNumbers.format(lastfmStats.averagePlayCount)}
+			/>
 		</div>
 	)
-})
-
-export default LastfmCard
+}
