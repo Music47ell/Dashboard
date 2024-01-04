@@ -1,19 +1,27 @@
+'use client'
+
 import { MediaCard } from '@/components/UI'
 import siteMetadata from '@/data/siteMetadata'
+import fetcher from '@/utils/fetcher'
+import { useEffect, useState } from 'react'
+import useSWR from 'swr'
 
-/**
- * https://gist.github.com/cramforce/b5e3f0b103f841d2e5e429b1d5ac4ded
- */
-function asyncComponent<T, R>(fn: (arg: T) => Promise<R>): (arg: T) => R {
-	return fn as (arg: T) => R
+type Show = {
+	title: string
+	poster: string
+	url: string
 }
 
-const ShowsWatched = asyncComponent(async () => {
-	const shows = await fetch(`${siteMetadata.siteUrl}/api/watched/shows`, {
-		next: {
-			revalidate: 3600
+export default function ShowsWatched(): JSX.Element {
+	const showsData = useSWR<Show[]>(`${siteMetadata.siteUrl}/api/watched/shows`, fetcher)
+
+	const [shows, setShows] = useState<Show[]>([])
+
+	useEffect(() => {
+		if (showsData.data) {
+			setShows(showsData.data)
 		}
-	}).then((res) => res.json())
+	}, [showsData.data])
 
 	return (
 		<div className="grid gap-2 md:grid-cols-2">
@@ -28,6 +36,4 @@ const ShowsWatched = asyncComponent(async () => {
 			))}
 		</div>
 	)
-})
-
-export default ShowsWatched
+}

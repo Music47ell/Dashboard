@@ -1,28 +1,43 @@
+'use client'
+
 import siteMetadata from '@/data/siteMetadata'
+import fetcher from '@/utils/fetcher'
+import { useEffect, useState } from 'react'
+import useSWR from 'swr'
 import OverviewItem from '../../components/OverviewItem'
 
-/**
- * https://gist.github.com/cramforce/b5e3f0b103f841d2e5e429b1d5ac4ded
- */
-function asyncComponent<T, R>(fn: (arg: T) => Promise<R>): (arg: T) => R {
-	return fn as (arg: T) => R
+type CodestatsStats = {
+	level: number
+	total_xp: number
+	new_xp: number
+	previous_xp: number
 }
 
-const CodeStatsCard = asyncComponent(async () => {
-	const stats = await fetch(`${siteMetadata.siteUrl}/api/stats/codestats`, {
-		next: {
-			revalidate: 3600
+export default function CodestatsCard(): JSX.Element {
+	const codestatsData = useSWR<CodestatsStats>(
+		`${siteMetadata.siteUrl}/api/stats/codestats`,
+		fetcher
+	)
+
+	const [codestatsStats, setCodestatsStats] = useState<CodestatsStats>({
+		level: 0,
+		total_xp: 0,
+		new_xp: 0,
+		previous_xp: 0
+	})
+
+	useEffect(() => {
+		if (codestatsData.data) {
+			setCodestatsStats(codestatsData.data)
 		}
-	}).then((res) => res.json())
+	}, [codestatsData])
 
 	return (
 		<div className="mb-1 grid gap-3 py-2 md:grid-cols-2">
-			<OverviewItem label="Level" value={stats.level} />
-			<OverviewItem label="Total XP" value={stats.total_xp.toLocaleString('en')} />
-			<OverviewItem label="Increased by" value={stats.new_xp.toLocaleString('en')} />
-			<OverviewItem label="From" value={stats.previous_xp.toLocaleString('en')} />
+			<OverviewItem label="Level" value={codestatsStats.level} />
+			<OverviewItem label="Total XP" value={codestatsStats.total_xp.toLocaleString('en')} />
+			<OverviewItem label="Increased by" value={codestatsStats.new_xp.toLocaleString('en')} />
+			<OverviewItem label="From" value={codestatsStats.previous_xp.toLocaleString('en')} />
 		</div>
 	)
-})
-
-export default CodeStatsCard
+}
