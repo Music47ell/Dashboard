@@ -13,7 +13,10 @@ type Language = {
 }
 
 export default function TopLanguages(): JSX.Element {
-	const topLanguagesData = useSWR<Language[]>(`${siteMetadata.siteUrl}/api/top/languages`, fetcher)
+	const topLanguagesData = useSWR<Language[]>(
+		`${siteMetadata.siteUrl}/api/codestats/top-languages`,
+		fetcher
+	)
 
 	const [topLanguages, setTopLanguages] = useState<Language[]>([])
 

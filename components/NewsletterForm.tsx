@@ -24,7 +24,7 @@ const NewsletterForm = () => {
 
 		setLoading(true)
 
-		const res = await fetch(`${siteMetadata.siteUrl}/api/newsletter`, {
+		const res = await fetch(`${siteMetadata.siteUrl}/api/emailoctopus/subscribe`, {
 			body: JSON.stringify({
 				email: inputEl.current.value
 			}),

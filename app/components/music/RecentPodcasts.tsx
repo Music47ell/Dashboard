@@ -13,7 +13,10 @@ type Show = {
 }
 
 export default function RecentPodcasts(): JSX.Element {
-	const recentPodcastsData = useSWR<Show[]>(`${siteMetadata.siteUrl}/api/recent/podcasts`, fetcher)
+	const recentPodcastsData = useSWR<Show[]>(
+		`${siteMetadata.siteUrl}/api/spotify/subscribed-podcasts`,
+		fetcher
+	)
 
 	const [recentPodcasts, setRecentPodcasts] = useState<Show[]>([])
 

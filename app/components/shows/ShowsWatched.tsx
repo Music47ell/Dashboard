@@ -13,7 +13,7 @@ type Show = {
 }
 
 export default function ShowsWatched(): JSX.Element {
-	const showsData = useSWR<Show[]>(`${siteMetadata.siteUrl}/api/watched/shows`, fetcher)
+	const showsData = useSWR<Show[]>(`${siteMetadata.siteUrl}/api/trakt/watched-shows`, fetcher)
 
 	const [shows, setShows] = useState<Show[]>([])
 

@@ -13,7 +13,7 @@ type Movie = {
 }
 
 export default function MoviesWatched(): JSX.Element {
-	const moviesData = useSWR<Movie[]>(`${siteMetadata.siteUrl}/api/watched/movies`, fetcher)
+	const moviesData = useSWR<Movie[]>(`${siteMetadata.siteUrl}/api/trakt/watched-movies`, fetcher)
 
 	const [movies, setMovies] = useState<Movie[]>([])
 

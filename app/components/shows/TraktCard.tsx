@@ -22,7 +22,7 @@ type TraktStats = {
 }
 
 export default function TraktCard(): JSX.Element {
-	const traktData = useSWR<TraktStats>(`${siteMetadata.siteUrl}/api/stats/trakt`, fetcher)
+	const traktData = useSWR<TraktStats>(`${siteMetadata.siteUrl}/api/trakt/stats`, fetcher)
 
 	const [traktStats, setTraktStats] = useState<TraktStats>({
 		episodes: {
