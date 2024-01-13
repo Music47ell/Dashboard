@@ -13,7 +13,10 @@ type Artist = {
 }
 
 export default function TopArtists(): JSX.Element {
-	const topArtistsData = useSWR<Artist[]>(`${siteMetadata.siteUrl}/api/top/artists`, fetcher)
+	const topArtistsData = useSWR<Artist[]>(
+		`${siteMetadata.siteUrl}/api/spotify/top-artists`,
+		fetcher
+	)
 
 	const [topArtists, setTopArtists] = useState<Artist[]>([])
 

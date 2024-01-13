@@ -13,7 +13,7 @@ type Track = {
 }
 
 export default function TopAlbums(): JSX.Element {
-	const topTracksData = useSWR<Track[]>(`${siteMetadata.siteUrl}/api/top/tracks`, fetcher)
+	const topTracksData = useSWR<Track[]>(`${siteMetadata.siteUrl}/api/spotify/top-tracks`, fetcher)
 
 	const [topTracks, setTopTracks] = useState<Track[]>([])
 

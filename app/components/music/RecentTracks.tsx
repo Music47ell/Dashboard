@@ -13,7 +13,10 @@ type Track = {
 }
 
 export default function RecentTracks(): JSX.Element {
-	const recentTracksData = useSWR<Track[]>(`${siteMetadata.siteUrl}/api/recent/tracks`, fetcher)
+	const recentTracksData = useSWR<Track[]>(
+		`${siteMetadata.siteUrl}/api/spotify/recent-tracks`,
+		fetcher
+	)
 
 	const [recentTracks, setRecentTracks] = useState<Track[]>([])
 
