@@ -1,44 +1,44 @@
 {
-	"name": "news47ell",
-	"version": "0.0.1",
-	"private": true,
-	"scripts": {
-		"dev": "next dev",
-		"lint": "biome check .",
-		"lint:fix": "biome check . --apply",
-		"build": "next build",
-		"start": "next start",
-		"analyze": "cross-env ANALYZE=true next build",
-		"pre-commit": "npx --no-install lint-staged",
-		"prepare": "husky install",
-		"update": "npx npm-check-updates --format group --interactive",
-		"find:unused": "npx next-unused",
-		"find:depcheck": "npx depcheck"
-	},
-	"dependencies": {
-		"@tailwindcss/typography": "^0.5.9",
-		"autoprefixer": "^10.4.16",
-		"next": "^13.4.12",
-		"postcss": "^8.4.32",
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0",
-		"sharp": "^0.32.4",
-		"string-width": "^6.1.0",
-		"swr": "^2.2.4",
-		"tailwindcss": "^3.4.0"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "1.4.1",
-		"@commitlint/cli": "^17.6.7",
-		"@commitlint/config-conventional": "^17.6.7",
-		"@svgr/webpack": "^8.1.0",
-		"@tailwindcss/forms": "^0.5.4",
-		"@types/node": "^20.10.5",
-		"@types/react": "^18.2.45",
-		"@types/react-dom": "^18.2.18",
-		"cross-env": "^7.0.3",
-		"husky": "^8.0.3",
-		"lint-staged": "^13.2.3",
-		"typescript": "^5.3.3"
-	}
+  "name": "news47ell",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "lint": "biome check .",
+    "lint:fix": "biome check . --apply",
+    "build": "next build",
+    "start": "next start",
+    "analyze": "cross-env ANALYZE=true next build",
+    "pre-commit": "pnpx  lint-staged",
+    "prepare": "husky install",
+    "update": "pnpx npm-check-updates --format group --interactive",
+    "find:unused": "pnpx next-unused",
+    "find:depcheck": "pnpx depcheck"
+  },
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.9",
+    "autoprefixer": "^10.4.16",
+    "next": "^13.4.12",
+    "postcss": "^8.4.32",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sharp": "^0.32.4",
+    "string-width": "^6.1.0",
+    "swr": "^2.2.4",
+    "tailwindcss": "^3.4.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.4.1",
+    "@commitlint/cli": "^17.6.7",
+    "@commitlint/config-conventional": "^17.6.7",
+    "@svgr/webpack": "^8.1.0",
+    "@tailwindcss/forms": "^0.5.4",
+    "@types/node": "^20.10.5",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "cross-env": "^7.0.3",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
+    "typescript": "^5.3.3"
+  }
 }
