@@ -1,6 +1,6 @@
 interface OverviewItemProps {
 	label: string
-	value: number
+	value: string | number
 }
 
 const OverviewItem = ({ label, value }: OverviewItemProps) => (
