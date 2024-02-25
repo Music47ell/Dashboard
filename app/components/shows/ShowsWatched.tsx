@@ -36,7 +36,6 @@ export default function ShowsWatched(): JSX.Element {
 					title={show.title}
 					image={show.poster || '/images/brand/logo.png'}
 					url={show.url}
-					source="trakt"
 				/>
 			))}
 		</div>

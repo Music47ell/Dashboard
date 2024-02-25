@@ -36,7 +36,6 @@ export default function MoviesWatched(): JSX.Element {
 					title={movie.title}
 					image={movie.poster || '/images/brand/logo.png'}
 					url={movie.url}
-					source="trakt"
 				/>
 			))}
 		</div>
