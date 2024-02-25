@@ -13,7 +13,12 @@ type Movie = {
 }
 
 export default function MoviesWatched(): JSX.Element {
-	const moviesData = useSWR<Movie[]>(`${siteMetadata.siteUrl}/api/trakt/watched-movies`, fetcher)
+	const moviesData = useSWR<Movie[]>(
+		`${
+			process.env.NODE_ENV === 'development' ? 'http://localhost:8787' : siteMetadata.siteUrl
+		}/api/trakt/watched-movies`,
+		fetcher
+	)
 
 	const [movies, setMovies] = useState<Movie[]>([])
 
@@ -29,9 +34,8 @@ export default function MoviesWatched(): JSX.Element {
 				<MediaCard
 					key={movie.title}
 					title={movie.title}
-					image={movie.poster}
+					image={movie.poster || '/images/brand/logo.png'}
 					url={movie.url}
-					source="trakt"
 				/>
 			))}
 		</div>

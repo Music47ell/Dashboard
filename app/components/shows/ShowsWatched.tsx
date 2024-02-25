@@ -13,7 +13,12 @@ type Show = {
 }
 
 export default function ShowsWatched(): JSX.Element {
-	const showsData = useSWR<Show[]>(`${siteMetadata.siteUrl}/api/trakt/watched-shows`, fetcher)
+	const showsData = useSWR<Show[]>(
+		`${
+			process.env.NODE_ENV === 'development' ? 'http://localhost:8787' : siteMetadata.siteUrl
+		}/api/trakt/watched-shows`,
+		fetcher
+	)
 
 	const [shows, setShows] = useState<Show[]>([])
 
@@ -29,9 +34,8 @@ export default function ShowsWatched(): JSX.Element {
 				<MediaCard
 					key={show.title}
 					title={show.title}
-					image={show.poster}
+					image={show.poster || '/images/brand/logo.png'}
 					url={show.url}
-					source="trakt"
 				/>
 			))}
 		</div>

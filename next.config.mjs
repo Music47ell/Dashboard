@@ -12,7 +12,8 @@ const nextConfig = {
 		domains: [
 			'i.scdn.co',
 			'image.tmdb.org', // TMDB TVShow/Movie Posters
-			'lastfm.freetls.fastly.net' // Last.fm Album Cover
+			'assets.fanart.tv', // Fanart.tv TVShow/Movie/Artist Posters
+			'coverartarchive.org' // MusicBrainz Album Cover
 		]
 	},
 	webpack: (config) => {

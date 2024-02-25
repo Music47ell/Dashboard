@@ -15,7 +15,9 @@ type CodestatsStats = {
 
 export default function CodestatsCard(): JSX.Element {
 	const codestatsData = useSWR<CodestatsStats>(
-		`${siteMetadata.siteUrl}/api/codestats/stats`,
+		`${
+			process.env.NODE_ENV === 'development' ? 'http://localhost:8787' : siteMetadata.siteUrl
+		}/api/codestats/stats`,
 		fetcher
 	)
 
@@ -35,9 +37,9 @@ export default function CodestatsCard(): JSX.Element {
 	return (
 		<div className="mb-1 grid gap-3 py-2 md:grid-cols-2">
 			<OverviewItem label="Level" value={codestatsStats.level} />
-			<OverviewItem label="Total XP" value={codestatsStats.total_xp.toLocaleString('en')} />
-			<OverviewItem label="Increased by" value={codestatsStats.new_xp.toLocaleString('en')} />
-			<OverviewItem label="From" value={codestatsStats.previous_xp.toLocaleString('en')} />
+			<OverviewItem label="Total XP" value={codestatsStats.total_xp} />
+			<OverviewItem label="Increased by" value={codestatsStats.new_xp} />
+			<OverviewItem label="From" value={codestatsStats.previous_xp} />
 		</div>
 	)
 }

@@ -3,11 +3,10 @@ import siteMetadata from '@/data/siteMetadata'
 
 import SectionHeading from '../SectionHeading'
 import SectionSubHeading from '../SectionSubHeading'
-import LastfmCard from './LastfmCard'
-import RecentPodcasts from './RecentPodcasts'
 import RecentTracks from './RecentTracks'
 import TopAlbums from './TopAlbums'
 import TopArtists from './TopArtists'
+import ListenbrainzCard from './listenbrainzCard'
 
 export default function Music() {
 	return (
@@ -17,7 +16,9 @@ export default function Music() {
 				<SectionSubHeading>
 					<div className="text-neutral-400 md:flex-row md:items-center">
 						<span>My all time </span>
-						<Link href={`https://www.last.fm/user/${siteMetadata.author.username}`}>Last.fm</Link>
+						<Link href={`https://listenbrainz.org/user/${siteMetadata.author.username}`}>
+							ListenBrainz
+						</Link>
 						<span> stats.</span>
 					</div>
 				</SectionSubHeading>
@@ -29,7 +30,7 @@ export default function Music() {
 						Recommend me some music
 					</Link>
 				</div>
-				<LastfmCard />
+				<ListenbrainzCard />
 			</div>
 			<h3 className="text-2xl font-bold leading-8 tracking-tight">Most Recent Tracks</h3>
 			<RecentTracks />
@@ -37,8 +38,6 @@ export default function Music() {
 			<TopAlbums />
 			<h3 className="text-2xl font-bold leading-8 tracking-tight">Monthly Top Artists</h3>
 			<TopArtists />
-			<h3 className="text-2xl font-bold leading-8 tracking-tight">Recent Podcasts</h3>
-			<RecentPodcasts />
 		</section>
 	)
 }
