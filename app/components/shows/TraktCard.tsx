@@ -2,7 +2,6 @@
 
 import siteMetadata from '@/data/siteMetadata'
 import fetcher from '@/utils/fetcher'
-import { displayNumbers } from '@/utils/formatters'
 import { useEffect, useState } from 'react'
 import useSWR from 'swr'
 import OverviewItem from '../../components/OverviewItem'
@@ -53,24 +52,13 @@ export default function TraktCard(): JSX.Element {
 		<div className="mb-1 grid gap-3 py-2 md:grid-cols-2">
 			<OverviewItem
 				label="Total Days"
-				value={displayNumbers.format(
-					(traktStats.episodes.minutes + traktStats.movies.minutes) / 60 / 24
-				)}
+				value={traktStats.episodes.minutes + traktStats.movies.minutes / 60 / 24}
 			/>
 			<OverviewItem label="Shows" value={traktStats.shows.watched} />
 			<OverviewItem label="Movies" value={traktStats.movies.watched} />
-			<OverviewItem
-				label="Days spent on shows"
-				value={displayNumbers.format(traktStats.episodes.minutes / 60 / 24)}
-			/>
-			<OverviewItem
-				label="Days spent on movies"
-				value={displayNumbers.format(traktStats.movies.minutes / 60 / 24)}
-			/>
-			<OverviewItem
-				label="Episodes watched"
-				value={displayNumbers.format(traktStats.episodes.watched)}
-			/>
+			<OverviewItem label="Days spent on shows" value={traktStats.episodes.minutes / 60 / 24} />
+			<OverviewItem label="Days spent on movies" value={traktStats.movies.minutes / 60 / 24} />
+			<OverviewItem label="Episodes watched" value={traktStats.episodes.watched} />
 		</div>
 	)
 }
