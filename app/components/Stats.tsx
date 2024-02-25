@@ -23,7 +23,9 @@ export default function SiteStats(): JSX.Element {
 	const viewsData = useSWR<Views>(`${siteMetadata.siteUrl}/api/turso/views`, fetcher)
 	const statsData = useSWR<Stats>(`${siteMetadata.siteUrl}/api/github/stats`, fetcher)
 	const subscribersData = useSWR<Subscribers>(
-		`${siteMetadata.siteUrl}/api/emailoctopus/subscribers`,
+		`${
+			process.env.NODE_ENV === 'development' ? 'http://localhost:8787' : siteMetadata.siteUrl
+		}/api/emailoctopus/subscribers`,
 		fetcher
 	)
 

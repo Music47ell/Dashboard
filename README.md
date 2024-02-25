@@ -7,7 +7,7 @@
 
 # My Personal Dashboard
 
-This is a personal dashboard that displays statistics from my Last.fm and Trakt accounts, as well as a few more statistics from my blog.
+This is a personal dashboard that displays statistics from my ListenBrainz and Trakt accounts, as well as a few more statistics from my blog.
 
 ## Stack
 
@@ -22,7 +22,7 @@ This is a personal dashboard that displays statistics from my Last.fm and Trakt 
 
 - Displays my blog statistics, including the number of posts, views.
 - Display coding statistics from my CodeStats.
-- Displays my top albums and recent tracks from Last.fm.
+- Displays my top albums and recent tracks from ListenBrainz.
 - Displays my watched movies and TV shows from Trakt.
 
 ## Getting Started

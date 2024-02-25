@@ -14,7 +14,9 @@ type Language = {
 
 export default function TopLanguages(): JSX.Element {
 	const topLanguagesData = useSWR<Language[]>(
-		`${siteMetadata.siteUrl}/api/codestats/top-languages`,
+		`${
+			process.env.NODE_ENV === 'development' ? 'http://localhost:8787' : siteMetadata.siteUrl
+		}/api/codestats/top-languages`,
 		fetcher
 	)
 

@@ -15,7 +15,9 @@ type CodestatsStats = {
 
 export default function CodestatsCard(): JSX.Element {
 	const codestatsData = useSWR<CodestatsStats>(
-		`${siteMetadata.siteUrl}/api/codestats/stats`,
+		`${
+			process.env.NODE_ENV === 'development' ? 'http://localhost:8787' : siteMetadata.siteUrl
+		}/api/codestats/stats`,
 		fetcher
 	)
 
