@@ -8,7 +8,7 @@ import useSWR from 'swr'
 import OverviewItem from './../OverviewItem'
 
 type ListenbrainzStats = {
-	accountAge: string
+	accountAge: number
 	artistsCount: number
 	tracksCount: number
 	listensCount: number
