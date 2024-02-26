@@ -38,7 +38,7 @@ export default function ListenbrainzCard(): JSX.Element {
 
 	return (
 		<div className="mb-1 grid gap-3 py-2 md:grid-cols-2">
-			<OverviewItem label="Account Age" value={listenbrainzStats.accountAge} />
+			<OverviewItem label="Account Age" value={`${listenbrainzStats.accountAge} Years`} />
 			<OverviewItem label="Artists" value={listenbrainzStats.artistsCount} />
 			<OverviewItem label="Tracks" value={listenbrainzStats.tracksCount} />
 			<OverviewItem label="Total Listens" value={listenbrainzStats.listensCount} />

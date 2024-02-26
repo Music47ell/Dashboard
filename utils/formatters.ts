@@ -38,4 +38,9 @@ const displayNumbers = new Intl.NumberFormat('en-US', {
 	maximumFractionDigits: 0
 })
 
-export { displayDate, displayDateAndTime, displayNumbers, hEntryDate }
+const minutesToDays = (minutes: number) => {
+	const minutesInDay = 24 * 60 // 24 hours * 60 minutes
+	return minutes / minutesInDay
+}
+
+export { displayDate, displayDateAndTime, displayNumbers, hEntryDate, minutesToDays }
